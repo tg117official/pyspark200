@@ -1,0 +1,12 @@
+<people>
+  <person>
+    <id>1</id>
+    <name>John</name>
+    <city>New York</city>
+  </person>
+  <person>
+    <id>2</id>
+    <name>Jane</name>
+    <city>San Francisco</city>
+  </person>
+</people>

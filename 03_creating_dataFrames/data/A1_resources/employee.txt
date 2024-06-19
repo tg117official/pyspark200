@@ -1,0 +1,7 @@
+eid,ename,dept,salary,date_of_joining
+1,abc,DE,5.8,2017-02-03
+2,xyz,DEV,5.9,2019-03-09
+3,pqr,DE,10.5,2014-05-15
+4,lmn,DEV,5.9,2018-04-17
+5,qwr,DE,5.8,2020-06-26
+6,rst,DEV,4.6,2016-04-27

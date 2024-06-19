@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "John",
+    "address": {
+      "city": "New York",
+      "state": "NY"
+    },
+    "phone_numbers": [
+      {
+        "type": "home",
+        "number": "123-456-7890"
+      },
+      {
+        "type": "work",
+        "number": "987-654-3210"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Jane",
+    "address": {
+      "city": "San Francisco",
+      "state": "CA"
+    },
+    "phone_numbers": [
+      {
+        "type": "home",
+        "number": "111-222-3333"
+      },
+      {
+        "type": "work",
+        "number": "444-555-6666"
+      }
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "type": "record",
+  "name": "Example",
+  "fields": [
+    {"name": "name", "type": "string"},
+    {"name": "age", "type": "int"},
+    {"name": "gender", "type": "string"}
+  ]
+}
