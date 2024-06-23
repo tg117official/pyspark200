@@ -68,3 +68,25 @@ spark.sql("SELECT * FROM employees CROSS JOIN departments").show()
 
 # Stop the Spark session
 spark.stop()
+
+# Questions:
+
+# A. Basic Join Types
+#   1. Inner Join: How can you perform an inner join between the employees and departments DataFrames based on the "DepartmentID"?
+#   2. Outer (Full) Join: What is the method to perform a full outer join on the "DepartmentID" between employees and departments?
+
+# B. Specific Join Scenarios
+#   3. Left Join: Demonstrate how to execute a left join between the employees and departments DataFrames, including all records from employees.
+#   4. Right Join: How do you perform a right join, ensuring all records from the departments DataFrame are included even if there are no matches in employees?
+
+# C. Specialized Join Types
+#   5. Left Anti Join: What is a left anti join, and how can it be implemented to get the records from employees that do not match any department?
+#   6. Left Semi Join: Explain a left semi join, which includes only the rows from employees that have a corresponding match in departments.
+
+# D. Additional Join Operations
+#   7. Self Join: How would you demonstrate a self join within the employees DataFrame to show employees from the same department?
+#   8. Cross Join: Describe how to execute a cross join that combines every row of employees with every row of departments, disregarding any matching condition.
+
+# Each question targets understanding different aspects of DataFrame join operations in PySpark,
+# using both the DataFrame API and equivalent SQL queries to demonstrate how these operations can be achieved in SQL within a Spark environment.
+

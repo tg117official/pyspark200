@@ -70,3 +70,26 @@ spark.sql("SELECT ename, (YEAR(current_date()) - YEAR(date_of_joining) <= 10) as
 
 # Stop the Spark session
 spark.stop()
+
+
+# Questions:
+
+# A. Basic Filtering and Selecting Exercises
+#   11. Select Employees with a Salary Over $100,000: Demonstrate how to filter rows in a DataFrame and in SQL where salary is greater than 100,000.
+#   12. Select Employee Names and Departments Where the Department is Not 'Tech': Show how to select and filter employee names and departments excluding those in the 'Tech' department.
+#   13. Calculate the Monthly Salary for Each Employee: Use both DataFrame transformation and SQL to compute the monthly salary by dividing the annual salary by 12.
+
+# B. More Advanced Filtering
+#   14. Filter Employees Who Joined Before 2015 and Select Their Names and Joining Dates: Illustrate how to filter employees based on their joining date before the year 2015 and select relevant columns.
+#   15. Select Employees' Names with 'a' in Their Name: Demonstrate how to filter employees whose names contain the letter 'a'.
+
+# C. Conditional Expressions and Complex Filtering
+#   16. Show Employees' Name and a Boolean Column If Salary Is Above Average: Use both DataFrame methods and SQL to add a boolean column indicating whether an employee's salary is above the average salary.
+#   17. Filter Employees from the 'Finance' Department and Select All Columns: Explain how to filter employees who are in the 'Finance' department.
+#   18. List Employees and the Year of Their Joining: Display how to extract the year from a date column both using DataFrame operations and SQL.
+
+# D. Specific Conditional Logic
+#   19. Filter for Employees Earning More Than $60,000 and in the 'HR' Department: Show filtering based on multiple conditions involving salary and department.
+#   20. Show if Employees Joined in the Last Decade: Calculate using both DataFrame operations and SQL whether employees joined in the last decade based on the current date.
+
+# Each exercise should demonstrate the application of DataFrame transformations and equivalent SQL queries to achieve the same results, facilitating learning and comparison between declarative and programmatic approaches in data manipulation.

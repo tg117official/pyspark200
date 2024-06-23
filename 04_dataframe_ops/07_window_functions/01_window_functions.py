@@ -116,3 +116,38 @@ spark.sql("SELECT *, LEAD(Sales) OVER (PARTITION BY Department ORDER BY Salary) 
 
 # Stop the Spark session
 spark.stop()
+
+# Questions:
+
+# A. Ranking Functions
+#   1. Rank by Salary within each Department: How can you apply the rank function to order employees by salary within each department?
+#   2. Dense Rank by Salary within each Department: How do you use the dense_rank function to assign a rank to employees by salary without gaps within departments?
+#   3. Row Number by Salary within each Department: What is the method for assigning a unique row number to each employee based on their salary within their department?
+
+# B. Cumulative Aggregations
+#   4. Cumulative Salary within each Department: How can you calculate the cumulative salary within each department sorted by salary?
+#   5. Cumulative count of employees within each department: How do you count the number of employees cumulatively within each department?
+#   6. Cumulative sum of sales within each department: What is the method for calculating the cumulative sales within departments?
+#   7. Maximum Salary within each Department up to current row: How can you determine the maximum salary up to each row within department?
+#   8. Minimum Salary within each Department up to current row: How can you compute the minimum salary up to each row within departments?
+
+# C. Lag and Lead Operations
+#   9. Lead Salary (next row's salary in the same department): How do you find the next row's salary within the same department?
+#   10. Lag Salary (previous row's salary in the same department): How can you retrieve the previous row's salary within the same department?
+#   11. Lead of sales (next row's sales in the same department): How do you determine the next row's sales within the same department?
+#   12. Difference between current salary and next salary within each department: How do you calculate the difference between the current and next salary within departments?
+#   13. Difference between current salary and previous salary within each department: How can you find the difference between current and previous salaries within each department?
+
+# D. Percentage and Moving Average Calculations
+#   14. Percentage change from previous salary within each department: What is the method to calculate the percentage change from the previous salary within each department?
+#   15. Moving Average Salary within each Department: How do you compute a moving average of salaries within each department?
+#   16. Average sales within each department up to current row: How can you determine the average sales up to each row within departments?
+
+# E. Sales Specific Operations
+#   17. Rank of sales within each department: How can you rank sales within departments?
+#   18. Dense rank of sales within each department: How do you apply dense rank to sales within each department?
+#   19. Row number of sales within each department: What is the method for assigning row numbers to sales records within each department?
+#   20. Maximum sales within each department up to current row: How can you determine the maximum sales up to each row within departments?
+
+# Each question targets the practical application of window functions in PySpark, demonstrating how to handle data within groups and across ordered datasets efficiently.
+

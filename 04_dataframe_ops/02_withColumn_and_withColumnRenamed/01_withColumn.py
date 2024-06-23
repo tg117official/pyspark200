@@ -74,3 +74,30 @@ FROM employee
 
 # Stop the Spark session
 spark.stop()
+
+
+# Questions:
+
+# A. Adding and Transforming Columns
+#   1. Add a New Column Showing Monthly Salary: Demonstrate how to calculate the monthly salary from the annual salary.
+#   2. Update Department Names to Uppercase: Show how to convert department names to uppercase.
+
+# B. Conditional and Boolean Expressions
+#   3. Create a Boolean Column Checking if Salary is Above Average: Illustrate how to compare individual salaries against the average salary.
+#   4. Add Tenure Column Showing Years Since Joining: Calculate the tenure of employees based on their date of joining.
+
+# C. Categorical and Conditional Manipulation
+#   5. Create a Column to Categorize Salaries: Categorize salaries into 'High', 'Medium', or 'Low' based on salary ranges.
+#   6. Adjust Salary for a 10% Raise Across the Board: Apply a 10% raise to the salary for all employees.
+
+# D. Date Formatting and Calculation
+#   7. Convert Date of Joining to 'YYYY-MM' Format: Format the date of joining to show only the year and month.
+#   8. Create an Age Column Assuming All Employees are Born in 1985: Calculate the age assuming a fixed birth year.
+
+# E. String Manipulation
+#   9. Append a Suffix to Employee Names: Add a suffix '- Emp' to employee names to signify employment status.
+
+# F. Normalization
+#   10. Normalize Salaries Between 0 and 1 Based on Min/Max Salary: Normalize salaries to a range between 0 and 1 using the minimum and maximum salaries.
+
+# Each exercise aims to teach specific data transformation techniques in PySpark, using both DataFrame API and corresponding SQL queries for users familiar with SQL. This dual approach helps underscore the flexibility and power of Spark in handling data transformations in big data contexts.

@@ -62,3 +62,28 @@ spark.sql("SELECT Department, Gender, COUNT(*) AS Total_Employees, AVG(Salary) A
 
 # Stop the Spark session
 spark.stop()
+
+# Questions:
+
+# A. Basic Multi-Column Aggregations
+#   1. Average Salary by Region and Department: How can you calculate the average salary grouped by both region and department?
+#   2. Total Sales by Region and Gender: How do you compute the total sales for each combination of region and gender?
+
+# B. Extensive Aggregations Involving Multiple Criteria
+#   3. Maximum and Minimum Salary by Department and Gender: What is the method to find the highest and lowest salaries within each department and gender group?
+#   4. Count of Employees by Region, Department, and Gender: How can you count the number of employees for each combination of region, department, and gender?
+
+# C. Sales and Salary Analysis
+#   5. Average Sales by Region and Department: How do you calculate the average sales for each region and department?
+#   6. Sum of Salaries by Gender and Department: How can you sum the salaries for each gender within each department?
+
+# D. Specific Aggregation Challenges
+#   7. Highest Sales Recorded in Each Region by Gender: What method would you use to find the highest sales achieved in each region by gender?
+#   8. Count Distinct Departments in Each Region: How can you determine the number of distinct departments in each region?
+
+# E. Minimum and Average Calculations
+#   9. Minimum Sales by Region and Gender: How do you determine the minimum sales amount for each combination of region and gender?
+#   10. Total Number of Employees and Average Salary by Department and Gender: How can you find both the total number of employees and the average salary grouped by department and gender?
+
+# These questions are designed to guide through the process of performing multi-column group-by operations using both DataFrame API methods and SQL queries, covering a range of scenarios from basic aggregations to more complex groupings and calculations.
+

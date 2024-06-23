@@ -1,14 +1,3 @@
-# Each exercise uses withColumn to create or modify a column based on some
-# operation or transformation, followed by withColumnRenamed to rename the
-# new or altered column.
-
-# The SQL equivalents accomplish the same tasks using aliases in the SELECT
-# statement to rename the columns immediately, providing a clean and direct comparison.
-
-# Make sure the path to the CSV file is correct and that the file is properly
-# formatted with headers. This script assumes basic familiarity with PySpark and
-# SQL functions.
-
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, expr
 
@@ -58,3 +47,26 @@ FROM employee
 
 # Stop the Spark session
 spark.stop()
+
+
+
+# Questions:
+
+# A. Column Calculations and Renaming
+#   1. Calculate Monthly Salary, then Rename the Column to 'Monthly_Income':
+#      How can you calculate a monthly salary from the annual salary and rename the resultant column?
+#   2. Convert Joining Date to Year, then Rename the Year Column to 'Year_Joined':
+#      How do you extract the year from a date column and then rename it for clarity?
+
+# B. New Column Creation and Renaming
+#   3. Add a Column for Length of Employee Name, then Rename it to 'Name_Length':
+#      How can you calculate the length of each employee's name and rename the column accordingly?
+#   4. Create an Age Column Assuming All Employees are Born in 1985, Rename it to 'Employee_Age':
+#      How do you calculate age assuming a birth year of 1985 and rename the column to reflect its content?
+
+# C. Data Normalization and Renaming
+#   5. Normalize Salary and then Rename the Column to 'Salary_Normalized':
+#      How can you normalize the salary data between 0 and 1 based on the minimum and maximum salaries and rename the column?
+
+# Each exercise is designed to practice withColumn transformations combined with withColumnRenamed in PySpark,
+# paralleled by equivalent SQL queries to perform similar operations directly in SQL.

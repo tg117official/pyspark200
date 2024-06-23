@@ -75,3 +75,26 @@ df.orderBy(rand()).show()
 
 # Stop the Spark session
 spark.stop()
+
+
+# Questions:
+
+# A. Basic Sorting
+#   1. Sort by One Column in Ascending Order: How can you sort a DataFrame based on the salary column in ascending order?
+#   2. Sort by One Column in Descending Order: What is the method to sort a DataFrame by the salary column in descending order?
+
+# B. Complex Sorting
+#   3. OrderBy with Ascending and Descending Together: How do you perform a sort operation using multiple columns with different sort orders (e.g., ascending for one column and descending for another)?
+#   4. Sort by Multiple Columns: Demonstrate how to sort a DataFrame by multiple columns (e.g., department followed by salary).
+#   5. Using asc() and desc() in sort: How do you explicitly specify the sort order of columns using asc() and desc() functions?
+
+# C. Advanced Sorting Techniques
+#   6. OrderBy Using Expression: How can you sort a DataFrame by the length of names in descending order?
+#   7. Case-Insensitive Sorting: Show how to sort a DataFrame by employee names in a case-insensitive manner, considering null values.
+#   8. Sorting with Null Values at the End: How can you sort a DataFrame by a date column where rows with null values appear at the end?
+
+# D. Specific Use Cases
+#   9. Sort Numerically on String Type Column by Casting: How to sort a DataFrame by casting a string type employee ID to an integer?
+#   10. Random Sorting: What method would you use to randomly sort the entries in a DataFrame?
+
+# Each use case demonstrates the flexibility of PySpark in handling different types of sorting scenarios, from straightforward to more nuanced conditions. These exercises also illustrate how similar operations can be achieved using SQL within a Spark environment.
