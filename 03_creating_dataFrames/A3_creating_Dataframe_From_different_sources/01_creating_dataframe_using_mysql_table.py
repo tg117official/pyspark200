@@ -12,7 +12,7 @@ spark = SparkSession.builder \
 # Properties dictionary containing JDBC connection parameters
 props = {
     "driver": "com.mysql.jdbc.Driver",
-    "url": "jdbc:mysql://localhost:3306/tg117",
+    "url": "jdbc:mysql://localhost:3306/<dbname>",
     "user": "root",
     "password": "root"
 }

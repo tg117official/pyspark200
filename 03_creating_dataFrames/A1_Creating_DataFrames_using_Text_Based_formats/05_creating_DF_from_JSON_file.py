@@ -8,7 +8,7 @@ spark = SparkSession.builder \
 
 # Read the movie data from a JSON file into a DataFrame
 # Replace '<path to movies.json>' with the actual path to your JSON file
-moviesDF = spark.read.option("inferSchema", "true").json("file:///<path to movies.json>")
+moviesDF = spark.read.option("inferSchema", "true").json("data/movies.json")
 
 # Print the schema of the DataFrame to show the inferred data types and structure
 moviesDF.printSchema()

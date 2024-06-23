@@ -11,16 +11,25 @@ spark = SparkSession.builder \
 
 # Define a custom schema for the employee DataFrame
 emp_schema = StructType([
-    StructField("id", IntegerType(), True),
+    StructField("eid", IntegerType(), True),
     StructField("name", StringType(), True),
     StructField("dept", StringType(), True),
     StructField("salary", DoubleType(), True),
     StructField("date_of_joining", StringType(), True)
 ])
 
+#Alternate Way to create schema
+emp_schema_2 = StructType().\
+    add("eid", IntegerType(), True).\
+    add("name", StringType(), True).\
+    add("dept", StringType(), True).\
+    add("salary", DoubleType(), True).\
+    add("date_of_joining", StringType(), True)
+
+
 # Read the employee data from a CSV file into a DataFrame using the defined schema
 # Replace '<path to employee.csv>' with the actual path to your CSV file
-empDF = spark.read.option("header", "true").schema(emp_schema).csv("file:///<path to employee.csv>")
+empDF = spark.read.option("header", "true").schema(emp_schema).csv("data/employee.txt")
 
 # Print the schema of the DataFrame to show the data types and structure
 empDF.printSchema()

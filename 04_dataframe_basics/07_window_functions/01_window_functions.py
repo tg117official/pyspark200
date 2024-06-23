@@ -7,7 +7,7 @@ spark = SparkSession.builder.appName("WindowFunctionsDemo").getOrCreate()
 
 # Sample data to create the DataFrame
 data = [
-    ("North", "Sales", "Male", 60000, 100),
+    ("North", "Sales", "Male", 60000, 100),owe
     ("South", "HR", "Female", 75000, 200),
     ("East", "Marketing", "Female", 72000, 150),
     ("West", "Sales", "Male", 50000, 250),

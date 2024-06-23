@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
 
 # Initialize a Spark session
 spark = SparkSession.builder.appName("EmployeeDataAnalysis").getOrCreate()
@@ -8,7 +9,6 @@ df = spark.read.csv("data/employee.csv", header=True, inferSchema=True)
 
 # Register the DataFrame as a temporary view to use SQL
 df.createOrReplaceTempView("employee")
-
 
 # Exercise 1: Select All Columns
 df.show()
@@ -28,6 +28,7 @@ spark.sql("SELECT ename, dept FROM employee").show()
 
 # Exercise 3: Select with Column Renaming
 df.select(df.salary.alias("monthly_salary")).show()
+df.select(col("salary").alias("montly_salary")).show()
 # Alternative using selectExpr
 df.selectExpr("salary as monthly_salary").show()
 # SQL Equivalent
@@ -36,6 +37,7 @@ spark.sql("SELECT salary AS monthly_salary FROM employee").show()
 
 # Exercise 4: Select and Perform an Operation
 df.select((df.salary / 12).alias("monthly_salary")).show()
+df.select((col("salary") / 12).alias("monthly_salary")).show()
 # Alternative using selectExpr for calculation
 df.selectExpr("salary / 12 as monthly_salary").show()
 # SQL Equivalent

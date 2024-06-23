@@ -14,7 +14,7 @@ sc = spark.sparkContext
 
 # Read the text file containing employee data into an RDD
 # Replace '<path to employee.txt>' with the actual path to your text file
-empRDD = sc.textFile("file:///<path to employee.txt>")
+empRDD = sc.textFile("data/employee.txt")
 
 # Display the first three lines of the RDD to inspect the structure
 initial_lines = empRDD.take(3)
