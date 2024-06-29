@@ -20,7 +20,7 @@ df = spark.read.format("csv") \
     .option("header", "true") \
     .option("delimiter", "|") \
     .schema(schema) \
-    .load("path/to/your/sample_data.psv")  # Adjust the path to where your actual data file is located
+    .load("data/users_pipe_separated.txt")  # Adjust the path to where your actual data file is located
 
 # Showing the schema of the DataFrame to confirm structure and data types
 df.printSchema()

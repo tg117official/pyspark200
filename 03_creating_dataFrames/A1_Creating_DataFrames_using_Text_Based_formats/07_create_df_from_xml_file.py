@@ -20,3 +20,6 @@ df.show()
 
 # Stopping the SparkSession
 spark.stop()
+
+# To run this code in pyspark shell, start pyspark shell with following command
+# pyspark --packages com.databricks:spark-xml_2.12:0.14.0

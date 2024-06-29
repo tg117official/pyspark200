@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql import Row
+from pyspark.sql.functions import lit
 
 # Initialize a Spark session
 spark = SparkSession.builder.appName("DataFrameOperationsDemo").getOrCreate()

@@ -5,7 +5,7 @@ from pyspark.sql.functions import expr
 spark = SparkSession.builder.appName("WithColumnTransformations").getOrCreate()
 
 # Load the data into a DataFrame
-df = spark.read.csv("path_to_your_csv/Updated_Employee_Details.csv", header=True, inferSchema=True)
+df = spark.read.csv("data/employee.csv", header=True, inferSchema=True)
 
 # Register the DataFrame as a temporary view to use SQL
 df.createOrReplaceTempView("employee")

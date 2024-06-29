@@ -20,7 +20,7 @@ df = spark.read.format("csv") \
     .option("header", "true") \
     .option("delimiter", "|~|") \
     .schema(schema) \
-    .load("path/to/your/multichar_delimited_data.txt")  # Adjust the path to your actual data file's location
+    .load("data\multichar_delimited_data.txt")  # Adjust the path to your actual data file's location
 
 # Showing the schema of the DataFrame to confirm structure and data types
 df.printSchema()  # Corrected to call the method with ()

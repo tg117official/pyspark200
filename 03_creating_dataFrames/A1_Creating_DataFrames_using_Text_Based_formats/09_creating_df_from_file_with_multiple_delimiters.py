@@ -17,7 +17,7 @@ df.printSchema()
 
 df.show()
 
-df1 = df.withColumn("id", split(col("id#name$age|salary")[0], '#'))
+df1 = df.withColumn("id", split(col("id#name$age|salary"), '#')[0])
 
 df2 = df1.withColumn("name", split(col("id#name$age|salary"), '\$')[0]).\
 withColumn("name", split(col("name"),'#')[1])

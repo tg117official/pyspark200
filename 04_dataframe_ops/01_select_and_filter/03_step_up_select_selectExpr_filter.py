@@ -1,12 +1,3 @@
-# - Each withColumn exercise modifies the DataFrame by either adding a new
-#   column or transforming an existing column, which is matched with an SQL query that performs the same operation.
-#
-# - The SQL equivalents use the SELECT statement with functions and expressions to
-#   achieve the same results as withColumn.
-#
-# - Ensure the path to the CSV file is correctly set in the script and the CSV has
-#   headers that match the column references used in the commands.
-
 from pyspark.sql import SparkSession
 
 # Initialize a Spark session

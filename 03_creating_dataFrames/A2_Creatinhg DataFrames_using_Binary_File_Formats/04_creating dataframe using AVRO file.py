@@ -28,3 +28,6 @@ df.show()
 
 # Stop the Spark session
 spark.stop()
+
+# To run this code in pyspark shell, start pyspark shell with following command
+# pyspark --packages org.apache.spark:spark-avro_2.12:3.4.3
