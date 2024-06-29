@@ -13,7 +13,7 @@ spark = SparkSession.builder \
 
 # Load the Avro schema file
 # It's good practice to load the schema from a file to ensure compatibility and avoid manual coding errors.
-schema_path = r"C:\Users\Sandeep\PycharmProjects\pyspark500\Creating DataFrames\data\A2_resources\twitter.avsc"
+schema_path = r"data\twitter.avsc"
 with open(schema_path, 'r') as f:
     avro_schema = f.read()
 
@@ -21,7 +21,7 @@ with open(schema_path, 'r') as f:
 # This ensures that the DataFrame conforms to the expected structure and types as defined in the Avro schema.
 df = spark.read.format("avro") \
     .option("avroSchema", avro_schema) \
-    .load(r"C:\Users\Sandeep\PycharmProjects\pyspark500\Creating DataFrames\data\A2_resources\twitter.avro")
+    .load(r"data\twitter.avro")
 
 # Show the DataFrame to verify the contents
 df.show()
