@@ -8,24 +8,32 @@ spark = SparkSession.builder \
     .getOrCreate()
 
 # Reading the data from a CSV file where the primary delimiter is a comma
-df = spark.read.format("csv") \
-    .option("header", "true") \
-    .option("delimiter", ",") \
-    .load("path/to/your/mixed_delimiters_data.txt")  # Adjust this path to your data file's location
+from pyspark.sql.functions import *
 
-# Splitting the 'name|age' column into separate 'name' and 'age' columns using the pipe '|' as a secondary delimiter
-split_col = split(df['name|age'], '\|')
+df = spark.read.option("header","true").\
+csv(r"file:///C:\Users\Sandeep\Desktop\data\mixed_demiliters.txt")
 
-# Adding the split columns back to the DataFrame
-df = df.withColumn('name', split_col.getItem(0)) \
-       .withColumn('age', split_col.getItem(1).cast('integer')) \
-       .drop('name|age')
-
-# Displaying the schema of the DataFrame to confirm the structure and data types
 df.printSchema()
 
-# Showing the contents of the DataFrame to verify it is loaded and split correctly
 df.show()
+
+df1 = df.withColumn("id", split(col("id#name$age|salary")[0], '#'))
+
+df2 = df1.withColumn("name", split(col("id#name$age|salary"), '\$')[0]).\
+withColumn("name", split(col("name"),'#')[1])
+
+df3 = df2.withColumn("age", split(col("id#name$age|salary"), "\$")[1]).\
+withColumn("age", split(col("age"), '\|')[0])
+
+
+df4 = df3.withColumn("salary", split(col("id#name$age|salary"), '\|')[1])
+
+
+df5 = df4.drop("id#name$age|salary")
+
+
+df5.show()
+
 
 # Stopping the SparkSession
 spark.stop()
