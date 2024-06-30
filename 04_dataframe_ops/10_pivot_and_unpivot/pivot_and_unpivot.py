@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import sum, expr
+from pyspark.sql.functions import sum, expr, col
 
 # Initialize a Spark session
 spark = SparkSession.builder.appName("PivotUnpivotDemo").getOrCreate()
@@ -7,6 +7,7 @@ spark = SparkSession.builder.appName("PivotUnpivotDemo").getOrCreate()
 # Sample data
 data = [
     ("North", "Apple", 10),
+    ("North", "Apple", 15),
     ("North", "Banana", 20),
     ("South", "Apple", 15),
     ("South", "Banana", 25),
@@ -30,7 +31,7 @@ pivot_df.show()
 spark.sql("SELECT Region, SUM(CASE WHEN Fruit = 'Apple' THEN Sales ELSE 0 END) AS Apple, SUM(CASE WHEN Fruit = 'Banana' THEN Sales ELSE 0 END) AS Banana FROM sales GROUP BY Region").show()
 
 # Exercise 2: Pivot with multiple aggregate functions
-pivot_df2 = df.groupBy("Region").pivot("Fruit").agg(sum("Sales"), sum(expr("Sales * 1.1")))
+pivot_df2 = df.groupBy("Region").pivot("Fruit").agg(sum(col("Sales")), sum(expr("Sales * 1.1")).alias("SP"))
 pivot_df2.show()
 # SQL Equivalent is similar, adding multiple aggregates per case
 
@@ -51,6 +52,7 @@ unpivot_df.show()
 #
 # 'Apple' and 'Banana' are the keys, which will be literal column names in the
 # unpivoted DataFrame.
+
 # Apple and Banana are the current column names in the pivoted DataFrame, where
 # their values in each row will be used as the values for the respective keys in
 # the unpivoted DataFrame.
