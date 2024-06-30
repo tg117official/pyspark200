@@ -39,6 +39,27 @@ pivot_df2.show()
 unpivot_expr = "stack(2, 'Apple', Apple, 'Banana', Banana) as (Fruit, Sales)"
 unpivot_df = pivot_df.select("Region", expr(unpivot_expr))
 unpivot_df.show()
+
+# stack(n, ...): This is a function used for unpivoting data in PySpark. n
+# represents the number of key-value pairs (column pairs) that will be unpivoted
+# into the resultant long format.
+#
+# In our case, n = 2 indicates there are two key-value pairs to consider for the
+# stack.
+# 'Apple', Apple, 'Banana', Banana: This portion defines the key-value pairs to
+# unpivot.
+#
+# 'Apple' and 'Banana' are the keys, which will be literal column names in the
+# unpivoted DataFrame.
+# Apple and Banana are the current column names in the pivoted DataFrame, where
+# their values in each row will be used as the values for the respective keys in
+# the unpivoted DataFrame.
+#
+# as (Fruit, Sales): This defines the new column names for the unpivoted data:
+#
+# Fruit will hold the fruit names ('Apple', 'Banana').
+# Sales will contain the corresponding sales values from the Apple and Banana columns of the pivoted DataFrame.
+
 # SQL Equivalent (using UNPIVOT, not available in Spark SQL)
 # Conceptual SQL:
 # SELECT Region, Fruit, Sales FROM sales_table UNPIVOT (Sales FOR Fruit IN (Apple, Banana))
