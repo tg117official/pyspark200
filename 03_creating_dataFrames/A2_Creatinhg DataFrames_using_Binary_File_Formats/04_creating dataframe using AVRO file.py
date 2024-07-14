@@ -16,6 +16,27 @@ spark = SparkSession.builder \
 schema_path = r"data\twitter.avsc"
 with open(schema_path, 'r') as f:
     avro_schema = f.read()
+#avro_schema = """
+# {
+#   "type" : "record",
+#   "name" : "twitter_schema",
+#   "namespace" : "com.miguno.avro",
+#   "fields" : [ {
+#     "name" : "username",
+#     "type" : "string",
+#     "doc" : "Name of the user account on Twitter.com"
+#   }, {
+#     "name" : "tweet",
+#     "type" : "string",
+#     "doc" : "The content of the user's Twitter message"
+#   }, {
+#     "name" : "timestamp",
+#     "type" : "long",
+#     "doc" : "Unix epoch time in seconds"
+#   } ],
+#   "doc:" : "A basic schema for storing Twitter messages"
+# } """
+
 
 # Read the Avro file into a DataFrame using the schema
 # This ensures that the DataFrame conforms to the expected structure and types as defined in the Avro schema.
@@ -30,4 +51,4 @@ df.show()
 spark.stop()
 
 # To run this code in pyspark shell, start pyspark shell with following command
-# pyspark --packages org.apache.spark:spark-avro_2.12:3.4.3
+# pyspark --packages org.apache.spark:spark-avro_2.12:3.4.3,
