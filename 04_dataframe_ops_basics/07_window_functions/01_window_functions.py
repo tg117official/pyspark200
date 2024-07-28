@@ -10,7 +10,7 @@ data = [
     ("North", "Sales", "Male", 60000, 100),
     ("South", "HR", "Female", 75000, 200),
     ("East", "Marketing", "Female", 72000, 150),
-    ("West", "Sales", "Male", 50000, 250),
+    ("West", "Sales", "Male", 60000, 250),
     ("North", "HR", "Male", 82000, 300),
     ("South", "Marketing", "Female", 68000, 120),
     ("East", "HR", "Male", 75000, 110),

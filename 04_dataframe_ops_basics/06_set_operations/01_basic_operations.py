@@ -89,8 +89,8 @@ UNION ALL
 SELECT *, 'df2' as source FROM table2
 """).show()
 
-# Exercise 10: Left Semi Join followed by a Union with Right Anti Join
-semi_union_anti_df = df1.join(df2, "id", "left_semi").union(df1.join(df2, "id", "right_anti"))
+# Exercise 10: Left Semi Join followed by a Union with Left Anti Join
+semi_union_anti_df = df1.join(df2, "id", "left_semi").union(df1.join(df2, "id", "left_anti"))
 semi_union_anti_df.show()
 # SQL Equivalent combining LEFT SEMI JOIN and RIGHT ANTI JOIN
 spark.sql("""

@@ -14,7 +14,7 @@
 # CSV file.
 
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, asc, desc, rand, expr
+from pyspark.sql.functions import col, asc, desc, rand, expr, length
 
 # Initialize a Spark session
 spark = SparkSession.builder.appName("SortingDemonstration").getOrCreate()
@@ -32,6 +32,7 @@ spark.sql("SELECT * FROM employee ORDER BY salary").show()
 
 # Use Case 2: Sort by One Column in Descending Order
 df.sort(df.salary.desc()).show()
+df.sort(desc(col("salary"))).show()
 # SQL Equivalent
 spark.sql("SELECT * FROM employee ORDER BY salary DESC").show()
 
@@ -51,7 +52,7 @@ df.sort(col("dept").asc(), col("ename").desc()).show()
 spark.sql("SELECT * FROM employee ORDER BY dept ASC, ename DESC").show()
 
 # Use Case 6: OrderBy Using Expression
-df.orderBy(expr("length(ename) desc")).show()
+df.orderBy(length(col("ename")).desc()).show()
 # SQL Equivalent
 spark.sql("SELECT * FROM employee ORDER BY LENGTH(ename) DESC").show()
 
@@ -59,6 +60,8 @@ spark.sql("SELECT * FROM employee ORDER BY LENGTH(ename) DESC").show()
 df.orderBy(asc("ename").asc_nulls_last()).show()
 # SQL Equivalent
 spark.sql("SELECT * FROM employee ORDER BY ename ASC NULLS LAST").show()
+
+df.orderBy(col("ename").desc_nulls_first()).show()
 
 # Use Case 8: Sorting with Null Values at the End
 df.sort(col("date_of_joining").asc_nulls_last()).show()

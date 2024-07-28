@@ -1,6 +1,8 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, when, year, current_date, month, expr, lit
 
+from pyspark import StorageLevel
+
 # Initialize a Spark session
 spark = SparkSession.builder.appName("AdvancedDataManipulation").enableHiveSupport().getOrCreate()
 

@@ -12,7 +12,8 @@ data = [
     ("David", 29, None),
     ("Ella", None, None),
     ("Frank", 26, 150),
-    ("Grace", 28, None)
+    ("Grace", 28, None),
+    ('',25,600)
 ]
 
 # Columns: Name, Age, Sales
