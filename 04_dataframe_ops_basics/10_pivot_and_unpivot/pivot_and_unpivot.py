@@ -68,7 +68,7 @@ unpivot_df.show()
 
 # Exercise 4: Dynamic Pivot using a list of values
 
-fruits = [row.Fruit for row in df.select("Fruit").distinct().collect()]
+fruits = [row.Fruit for row in df.select("Fruit").distinct().collect()] # [Apple, Banana]
 pivot_df3 = df.groupBy("Region").pivot("Fruit", fruits).sum("Sales")
 pivot_df3.show()
 

@@ -47,7 +47,7 @@ df.withColumn("row_number", row_number().over(windowSpec)).show()
 spark.sql("SELECT *, ROW_NUMBER() OVER (PARTITION BY Department ORDER BY Salary) as row_number FROM employees").show()
 
 # Exercise 4: Cumulative Salary within each Department
-df.withColumn("cumulative_salary", sum("Salary").over(windowSpec)).show()
+df.withColumn("cumulative_salary", sum("Salary").over(windowSpec.rowsBetween(Window.unboundedPreceding, Window.currentRow))).show()
 spark.sql("SELECT *, SUM(Salary) OVER (PARTITION BY Department ORDER BY Salary) as cumulative_salary FROM employees").show()
 
 # Exercise 5: Moving Average Salary within each Department
