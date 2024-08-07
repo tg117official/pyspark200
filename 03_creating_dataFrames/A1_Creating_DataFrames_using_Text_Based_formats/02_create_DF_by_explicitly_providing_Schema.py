@@ -16,11 +16,11 @@ spark = SparkSession.builder \
 
 # Define a custom schema for the employee DataFrame
 emp_schema = StructType([
+    StructField("eid", IntegerType(), True),
     StructField("ename", StringType(), True),
     StructField("dept", StringType(), True),
     StructField("salary", DoubleType(), True),
-    StructField("date_of_joining", StringType(), True),
-    StructField("eid", IntegerType(), True)
+    StructField("date_of_joining", StringType(), True)
 ])
 
 #Alternate Way to create schema
