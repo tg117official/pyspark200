@@ -1,7 +1,9 @@
 # Write a UDF that safely handles null values when performing string concatenation.
-
+from pyspark.sql import SparkSession
 from pyspark.sql.functions import udf
 from pyspark.sql.types import StringType
+
+spark = SparkSession.builder.appName("UDF").getOrCreate()
 
 # Create UDF
 def safe_concat(a, b):

@@ -1,5 +1,10 @@
+from pyspark.sql import SparkSession
 from pyspark.sql.functions import udf
 from pyspark.sql.types import StringType
+
+
+
+spark = SparkSession.builder.appName("UDF").getOrCreate()
 
 # Create UDF
 concat_udf = udf(lambda x: f"Hello {x}", StringType())

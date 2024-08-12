@@ -5,6 +5,7 @@ from pyspark.sql.functions import udf, col
 from pyspark.sql.types import DateType
 from pyspark.sql import SparkSession
 
+
 spark = SparkSession.builder.appName('SQL UDF Example').getOrCreate()
 
 # Create UDF
@@ -19,11 +20,6 @@ df = df.select(col("date").cast("date"), "days")
 
 # Apply UDF
 df.withColumn('new_date', add_days_udf('date', 'days')).show()
-
-
-
-
-
 
 
 

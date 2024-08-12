@@ -1,7 +1,9 @@
 #  Create a UDF that takes two columns, multiplies them, and returns the product.
-
+from pyspark.sql import SparkSession
 from pyspark.sql.functions import udf
 from pyspark.sql.types import IntegerType
+
+spark = SparkSession.builder.appName("UDF").getOrCreate()
 
 # Create UDF
 multiply_udf = udf(lambda x, y: x * y, IntegerType())

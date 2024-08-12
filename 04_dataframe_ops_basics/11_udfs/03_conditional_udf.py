@@ -1,8 +1,9 @@
 # Create a UDF that returns 'even' if a number is even and 'odd' if a number is odd.
-
+from pyspark.sql import SparkSession
 from pyspark.sql.functions import udf
 from pyspark.sql.types import StringType
 
+spark = SparkSession.builder.appName("UDF").getOrCreate()
 # Create UDF
 def odd_even(x):
     return 'even' if x % 2 == 0 else 'odd'

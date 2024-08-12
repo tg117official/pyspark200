@@ -67,6 +67,8 @@ spark.sql(f"SELECT Name, Age, COALESCE(Sales, {avg_sales}) AS Sales FROM people"
 df.withColumn("Sales", when(col("Sales").isNull(), 100).otherwise(col("Sales"))).show()
 spark.sql("SELECT Name, Age, CASE WHEN Sales IS NULL THEN 100 ELSE Sales END AS Sales FROM people").show()
 
+df.select([count(when(col(c).isNull(), lit("na"))).alias(c) for c in df.columns]).show()
+
 # Exercise 11: Count the number of nulls in each column
 df.select([count(when(col(c).isNull(), c)).alias(c) for c in df.columns]).show()
 spark.sql("SELECT SUM(CASE WHEN Age IS NULL THEN 1 ELSE 0 END) AS Age, SUM(CASE WHEN Sales IS NULL THEN 1 ELSE 0 END) AS Sales FROM people").show()

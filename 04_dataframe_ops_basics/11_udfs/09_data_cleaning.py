@@ -1,5 +1,5 @@
 # Design a UDF to clean whitespace from a string column and apply it to a DataFrame.
-
+from pyspark.sql import SparkSession
 from pyspark.sql.functions import udf
 from pyspark.sql.types import StringType
 
@@ -19,6 +19,8 @@ df.withColumn('clean', clean_whitespace_udf('dirty')).show()
 
 from pyspark.sql.functions import udf
 from pyspark.sql.types import StringType
+
+spark = SparkSession.builder.appName("UDF").getOrCreate()
 
 @udf(StringType())
 def clean_whitespace(x):

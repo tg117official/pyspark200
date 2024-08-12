@@ -1,7 +1,10 @@
 # Develop a UDF that returns a dictionary containing the original and doubled value of a number.
-
+from pyspark.sql import SparkSession
 from pyspark.sql.functions import udf
 from pyspark.sql.types import MapType, IntegerType, StringType
+
+
+spark = SparkSession.builder.appName("UDF").getOrCreate()
 
 # Create UDF
 def double_info(x):
