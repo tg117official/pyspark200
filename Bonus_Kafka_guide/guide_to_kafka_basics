@@ -1,0 +1,120 @@
+Kafka Complete Hands on
+
+Start ZooKeeper:
+zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties &
+
+Start Kafka Server:
+kafka-server-start.sh $KAFKA_HOME/config/server.properties &
+
+
+Basic Kafka Commands
+
+1. Create a Topic:
+   This command creates a new topic named `test-topic` with a replication factor of 1 and a single partition.
+
+$KAFKA_HOME/bin/kafka-topics.sh --create --topic test-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+
+2. List Topics:
+   This command lists all the topics available on the Kafka server.
+
+$KAFKA_HOME/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+# ec2-3-145-208-232.us-east-2.compute.amazonaws.com:9092
+
+
+3. Describe a Topic:
+   This command provides details about a specific topic.
+
+$KAFKA_HOME/bin/kafka-topics.sh --describe --topic test-topic --bootstrap-server localhost:9092
+
+
+4. Start a Console Producer:
+   This command starts a console producer that sends messages to the specified topic.
+
+$KAFKA_HOME/bin/kafka-console-producer.sh --topic test-topic --bootstrap-server localhost:9092
+
+# kafka-console-producer.sh --topic test-topic --bootstrap-server ec2-3-145-208-232.us-east-2.compute.amazonaws.com:9092
+
+
+   After running this command, you can type messages into the console, and they will be sent to the Kafka topic. Press `Enter` to send each message.
+
+5. Start a Console Consumer:
+
+   This command starts a console consumer that reads messages from the specified topic.
+
+$KAFKA_HOME/bin/kafka-console-consumer.sh --topic test-topic --from-beginning --bootstrap-server localhost:9092
+
+kafka-console-consumer.sh --topic test-topic --bootstrap-server ec2-3-145-208-232.us-east-2.compute.amazonaws.com:9092
+
+
+   The `--from-beginning` option tells the consumer to read messages from the beginning of the topic.
+
+6. Delete a Topic:
+
+   This command deletes a specific topic.
+
+$KAFKA_HOME/bin/kafka-topics.sh --delete --topic test-topic --bootstrap-server localhost:9092
+
+
+7. Produce Messages from a File:
+
+   This command sends messages from a file to a topic.
+
+$KAFKA_HOME/bin/kafka-console-producer.sh --topic test-topic --bootstrap-server localhost:9092 < /path/to/your/file.txt
+
+
+8. Consume Messages to a File:
+
+   This command reads messages from a topic and writes them to a file.
+
+$KAFKA_HOME/bin/kafka-console-consumer.sh --topic test-topic --from-beginning --bootstrap-server localhost:9092 > /path/to/your/output.txt
+
+
+Stop Kafka Server:
+
+kafka-server-stop.sh
+
+Stop Zookeeper Server:
+
+
+zookeeper-server-stop.sh
+
+
+## Understanding Partitions :
+
+ubuntu@ip-172-31-1-41:~$ cd /tmp/kafka-logs/test-topic-0
+
+ubuntu@ip-172-31-1-41:/tmp/kafka-logs/test-topic-0$ ls
+00000000000000000000.index
+00000000000000000000.timeindex
+00000000000000000000.log
+Leader-epoch-checkpoint
+Partition.metadata
+
+
+Segment Files
+00000000000000000000.log:
+Purpose: This file contains the actual messages (records) that are produced to the topic partition.
+Naming: The number in the filename (here 00000000000000000000) represents the starting offset of the messages in that segment. Since this is the first segment, the starting offset is 0.
+00000000000000000000.index:
+Purpose: This index file maps message offsets to their physical positions in the corresponding .log file. It allows Kafka to quickly locate the position of a message within the .log file.
+Naming: The number in the filename corresponds to the same starting offset as the .log file, indicating they are associated with each other.
+00000000000000000000.timeindex:
+Purpose: This time-based index file maps timestamps to physical positions in the .log file. It allows Kafka to quickly locate messages based on their timestamps.
+Naming: The number in the filename matches the starting offset of the .log file it is associated with.
+Metadata Files
+Leader-epoch-checkpoint:
+Purpose: This file keeps track of leader epochs for the partition. Leader epochs are used to maintain the consistency and integrity of the partition data during leader changes in a Kafka cluster.
+Contents: It contains information about the leader epochs, which helps Kafka determine which leader was responsible for writing certain segments of the log.
+A leader epoch is a monotonically increasing number that Kafka uses to track leadership changes for a partition. Each time a new leader is elected for a partition, the leader epoch is incremented. The leader epoch helps Kafka determine the sequence of leadership changes and ensures that the correct leader processes client requests.
+partition.metadata:
+Purpose: This file stores metadata information about the partition.
+Contents: It contains information such as the partition's topic name, partition ID, and possibly additional configuration details specific to the partition.
+
+
+# Zookeeper properties for EC2 :
+
+server.properties :
+    listeners=PLAINTEXT://0.0.0.0:9092
+    advertised.listeners=PLAINTEXT://your_ec2_public_dns:9092
+
