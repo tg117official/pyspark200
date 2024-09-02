@@ -1,0 +1,173 @@
+1. `map`
+- Description: Applies a function to each element of the RDD and returns a new RDD with the transformed elements.
+- Syntax: `rdd.map(function)`
+- Example:
+
+  data = [1, 2, 3, 4, 5]
+  rdd = sc.parallelize(data)
+  mapped_rdd = rdd.map(lambda x: x * 2)
+  mapped_rdd.collect()
+  # Output: [2, 4, 6, 8, 10]
+
+- Practice Examples:
+  1. Multiply each number by 3.
+  2. Add 5 to each number.
+
+
+
+ 2. `flatMap`
+- Description: Similar to `map`, but each input item can be mapped to 0 or more output items (flattened output).
+- Syntax: `rdd.flatMap(function)`
+- Example:
+
+  data = ["Hello world", "Welcome to PySpark"]
+  rdd = sc.parallelize(data)
+  flat_mapped_rdd = rdd.flatMap(lambda line: line.split(" "))
+  flat_mapped_rdd.collect()
+  # Output: ['Hello', 'world', 'Welcome', 'to', 'PySpark']
+
+- Practice Examples:
+  1. Split each sentence into words and remove punctuation.
+  2. Extract the first letter of each word.
+
+
+
+ 3. `filter`
+- Description: Returns a new RDD containing only the elements that satisfy a given condition.
+- Syntax: `rdd.filter(function)`
+- Example:
+
+  data = [1, 2, 3, 4, 5]
+  rdd = sc.parallelize(data)
+  filtered_rdd = rdd.filter(lambda x: x % 2 == 0)
+  filtered_rdd.collect()
+  # Output: [2, 4]
+
+- Practice Examples:
+  1. Filter out numbers greater than 3.
+  2. Filter for odd numbers only.
+
+
+
+ 4. `sortBy`
+- Description: Sorts the RDD by the result of the key function.
+- Syntax: `rdd.sortBy(function)`
+- Example:
+
+  data = [("a", 3), ("b", 1), ("c", 2)]
+  rdd = sc.parallelize(data)
+  sorted_rdd = rdd.sortBy(lambda x: x[1])
+  sorted_rdd.collect()
+  # Output: [('b', 1), ('c', 2), ('a', 3)]
+
+- Practice Examples:
+  1. Sort by the first element of the tuple.
+  2. Sort in descending order by the second element.
+
+
+
+ 5. `groupByKey`
+- Description: Groups the values for each key in the RDD.
+- Syntax: `rdd.groupByKey()`
+- Example:
+
+  data = [("a", 1), ("b", 2), ("a", 3)]
+  rdd = sc.parallelize(data)
+  grouped_rdd = rdd.groupByKey().mapValues(list)
+  grouped_rdd.collect()
+  # Output: [('a', [1, 3]), ('b', [2])]
+
+- Practice Examples:
+  1. Group by key and sum the values.
+  2. Group by key and count the number of values for each key.
+
+
+
+ 6. `reduceByKey`
+- Description: Combines the values for each key using a specified function.
+- Syntax: `rdd.reduceByKey(function)`
+- Example:
+
+  data = [("a", 1), ("b", 2), ("a", 3)]
+  rdd = sc.parallelize(data)
+  reduced_rdd = rdd.reduceByKey(lambda x, y: x + y)
+  reduced_rdd.collect()
+  # Output: [('a', 4), ('b', 2)]
+
+- Practice Examples:
+  1. Reduce by key and multiply the values.
+  2. Reduce by key and find the maximum value for each key.
+
+
+
+ 7. `union`
+- Description: Returns the union of two RDDs.
+- Syntax: `rdd1.union(rdd2)`
+- Example:
+
+  data1 = [1, 2, 3]
+  data2 = [3, 4, 5]
+  rdd1 = sc.parallelize(data1)
+  rdd2 = sc.parallelize(data2)
+  union_rdd = rdd1.union(rdd2)
+  union_rdd.collect()
+  # Output: [1, 2, 3, 3, 4, 5]
+
+- Practice Examples:
+  1. Union two RDDs and remove duplicates.
+  2. Union two RDDs and count the elements.
+
+
+
+ 8. `join`
+- Description: Joins two RDDs by their keys.
+- Syntax: `rdd1.join(rdd2)`
+- Example:
+
+  data1 = [("a", 1), ("b", 2)]
+  data2 = [("a", 3), ("b", 4)]
+  rdd1 = sc.parallelize(data1)
+  rdd2 = sc.parallelize(data2)
+  joined_rdd = rdd1.join(rdd2)
+  joined_rdd.collect()
+  # Output: [('a', (1, 3)), ('b', (2, 4))]
+
+- Practice Examples:
+  1. Perform a left outer join.
+  2. Perform a right outer join.
+
+
+
+ 9. `intersection`
+- Description: Returns the intersection of two RDDs (common elements).
+- Syntax: `rdd1.intersection(rdd2)`
+- Example:
+
+  data1 = [1, 2, 3]
+  data2 = [3, 4, 5]
+  rdd1 = sc.parallelize(data1)
+  rdd2 = sc.parallelize(data2)
+  intersection_rdd = rdd1.intersection(rdd2)
+  intersection_rdd.collect()
+  # Output: [3]
+
+- Practice Examples:
+  1. Find the intersection of two RDDs with different data.
+  2. Find the intersection and count the number of elements.
+
+
+
+ 10. `sortByKey`
+- Description: Sorts the RDD by key.
+- Syntax: `rdd.sortByKey(ascending=True)`
+- Example:
+
+  data = [("b", 2), ("a", 1), ("c", 3)]
+  rdd = sc.parallelize(data)
+  sorted_rdd = rdd.sortByKey()
+  sorted_rdd.collect()
+  # Output: [('a', 1), ('b', 2), ('c', 3)]
+
+- Practice Examples:
+  1. Sort by key in descending order.
+  2. Sort by key and filter keys starting with the letter 'b'.
