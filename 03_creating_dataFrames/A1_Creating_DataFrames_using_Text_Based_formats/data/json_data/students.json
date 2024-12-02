@@ -1,0 +1,5 @@
+[
+    {"student_id": "S1", "name": "John", "grade": "A", "age": 18},
+    {"student_id": "S2", "name": "Emma", "grade": "B", "age": 20},
+    {"student_id": "S3", "name": "Mike", "grade": "A", "age": 19}
+]

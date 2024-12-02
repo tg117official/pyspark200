@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Set up Kafka producer
 producer = KafkaProducer(
-    bootstrap_servers='3.145.208.232:9092',
+    bootstrap_servers='18.188.225.10:9092',
     value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
 

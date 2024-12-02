@@ -1,0 +1,7 @@
+{
+    "fields": [
+        {"name": "id", "type": "integer", "nullable": false},
+        {"name": "name", "type": "string", "nullable": true},
+        {"name": "age", "type": "integer", "nullable": true}
+    ]
+}

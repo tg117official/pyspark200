@@ -1,0 +1,10 @@
+[
+    "id",
+    "name",
+    "details.age",
+    "details.address.street",
+    "details.address.city",
+    "details.hobbies",
+    "details.preferences.color",
+    "details.preferences.food"
+]

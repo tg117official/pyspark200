@@ -1,0 +1,30 @@
+{
+    "fields": [
+        {"name": "id", "type": "integer", "nullable": false},
+        {"name": "name", "type": "string", "nullable": true},
+        {
+            "name": "details",
+            "type": "struct",
+            "fields": [
+                {"name": "age", "type": "integer", "nullable": true},
+                {
+                    "name": "address",
+                    "type": "struct",
+                    "fields": [
+                        {"name": "street", "type": "string", "nullable": true},
+                        {"name": "city", "type": "string", "nullable": true}
+                    ]
+                },
+                {"name": "hobbies", "type": "array", "elementType": "string", "containsNull": true},
+                {
+                    "name": "preferences",
+                    "type": "struct",
+                    "fields": [
+                        {"name": "color", "type": "string", "nullable": true},
+                        {"name": "food", "type": "string", "nullable": true}
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "Alice",
+        "details": {
+            "age": 30,
+            "address": {
+                "street": "123 Main St",
+                "city": "New York"
+            },
+            "hobbies": ["Reading", "Hiking"],
+            "preferences": {
+                "color": "Blue",
+                "food": "Pizza"
+            }
+        }
+    },
+    {
+        "id": 2,
+        "name": "Bob",
+        "details": {
+            "age": 25,
+            "address": {
+                "street": "456 Elm St",
+                "city": "Los Angeles"
+            },
+            "hobbies": ["Cycling", "Swimming"],
+            "preferences": {
+                "color": "Green",
+                "food": "Sushi"
+            }
+        }
+    },
+    {
+        "id": 3,
+        "name": "Charlie",
+        "details": {
+            "age": 35,
+            "address": {
+                "street": "789 Maple Dr",
+                "city": "Chicago"
+            },
+            "hobbies": ["Photography", "Running"],
+            "preferences": {
+                "color": "Red",
+                "food": "Pasta"
+            }
+        }
+    }
+]
