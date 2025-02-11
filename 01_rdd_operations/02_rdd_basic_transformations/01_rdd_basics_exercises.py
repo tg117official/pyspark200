@@ -661,10 +661,159 @@ rdd10 = sc.parallelize([("HR", 1), ("IT", 1), ("HR", 1), ("IT", 1), ("Finance", 
 result10 = rdd10.reduceByKey(lambda a, b: a + b).collect()
 print("Exercise 10:", result10)
 
-# Stop Spark Context
-spark.stop()
+
+# ------------------------- DISTINCT EXERCISE -------------------------
+# Exercise 1: Get unique numbers from an RDD
+# Given an RDD of numbers, remove duplicates.
+rdd1 = sc.parallelize([1, 2, 2, 3, 4, 4, 5])
+result1 = rdd1.distinct().collect()
+print("Exercise 1 (Distinct):", result1)
+
+# ------------------------- CARTESIAN EXERCISE -------------------------
+# Exercise 2: Cartesian product of two sets
+# Given two RDDs of numbers, compute the cartesian product.
+rdd2_a = sc.parallelize([1, 2, 3])
+rdd2_b = sc.parallelize(["A", "B", "C"])
+result2 = rdd2_a.cartesian(rdd2_b).collect()
+print("Exercise 2 (Cartesian):", result2)
+
+# ------------------------- ZIP EXERCISE -------------------------
+# Exercise 3: Zip two RDDs together
+# Given two RDDs, zip them to form pairs.
+rdd3_a = sc.parallelize(["Alice", "Bob", "Charlie"])
+rdd3_b = sc.parallelize([25, 30, 35])
+result3 = rdd3_a.zip(rdd3_b).collect()
+print("Exercise 3 (Zip):", result3)
+
+# ------------------------- SUBTRACT EXERCISE -------------------------
+# Exercise 4: Subtract elements from an RDD
+# Given two RDDs, remove elements in the second RDD from the first.
+rdd4_a = sc.parallelize([1, 2, 3, 4, 5])
+rdd4_b = sc.parallelize([3, 4])
+result4 = rdd4_a.subtract(rdd4_b).collect()
+print("Exercise 4 (Subtract):", result4)
+
+# ------------------------- COALESCE EXERCISE -------------------------
+# Exercise 5: Reduce the number of partitions
+# Given an RDD, reduce the number of partitions using coalesce.
+rdd5 = sc.parallelize(range(1, 21), numSlices=4)
+result5 = rdd5.coalesce(2).glom().collect()
+print("Exercise 5 (Coalesce):", result5)
+
+# ------------------------- REPARTITION EXERCISE -------------------------
+# Exercise 6: Increase the number of partitions
+# Given an RDD, increase the number of partitions using repartition.
+result6 = rdd5.repartition(6).glom().collect()
+print("Exercise 6 (Repartition):", result6)
+
+# ------------------------- PIPE EXERCISE -------------------------
+# Exercise 7: Use pipe to execute a shell command
+# Given an RDD of strings, use pipe to execute a shell command (echo).
+rdd7 = sc.parallelize(["hello", "world"])
+result7 = rdd7.pipe("echo").collect()
+print("Exercise 7 (Pipe):", result7)
+
+# ------------------------- KEYBY EXERCISE -------------------------
+# Exercise 8: Convert elements into key-value pairs
+# Given an RDD of words, convert it into key-value pairs using keyBy.
+rdd8 = sc.parallelize(["spark", "hadoop", "bigdata"])
+result8 = rdd8.keyBy(lambda word: word[0]).collect()
+print("Exercise 8 (KeyBy):", result8)
+
+# ------------------------- MAPPARTITIONS EXERCISE -------------------------
+# Exercise 9: Apply a function to each partition
+# Given an RDD, use mapPartitions to apply a function to each partition.
+def partition_func(iterable):
+    return [sum(iterable)]  # Summing all values in a partition
+
+rdd9 = sc.parallelize(range(1, 11), numSlices=2)
+result9 = rdd9.mapPartitions(partition_func).collect()
+print("Exercise 9 (MapPartitions):", result9)
+
+# ------------------------- GLOM EXERCISE -------------------------
+# Exercise 10: View elements within each partition
+# Given an RDD, use glom to see partition-wise data.
+result10 = rdd9.glom().collect()
+print("Exercise 10 (Glom):", result10)
 
 
+
+# ------------------------- FLATMAPVALUES EXERCISE -------------------------
+# Exercise 1: Expand values in key-value pairs
+# Given an RDD of (key, list_of_values), expand the values while keeping the key.
+rdd1 = sc.parallelize([("A", [1, 2, 3]), ("B", [4, 5]), ("C", [6, 7, 8, 9])])
+result1 = rdd1.flatMapValues(lambda x: x).collect()
+print("Exercise 1 (FlatMapValues):", result1)
+
+# ------------------------- COMBINEBYKEY EXERCISE -------------------------
+# Exercise 2: Compute the average score per student
+# Given an RDD of (student, score), compute the average score per student.
+rdd2 = sc.parallelize([("Alice", 85), ("Bob", 90), ("Alice", 78), ("Bob", 88), ("Charlie", 75)])
+result2 = rdd2.combineByKey(lambda v: (v, 1),  # Create a tuple (value, count)
+                            lambda acc, v: (acc[0] + v, acc[1] + 1),  # Aggregate
+                            lambda acc1, acc2: (acc1[0] + acc2[0], acc1[1] + acc2[1])  # Merge
+                            ).mapValues(lambda x: x[0] / x[1]).collect()
+print("Exercise 2 (CombineByKey - Average Scores):", result2)
+
+# ------------------------- MAPVALUES EXERCISE -------------------------
+# Exercise 3: Increase salary of employees by 10%
+# Given an RDD of (employee, salary), increase each salary by 10%.
+rdd3 = sc.parallelize([("John", 50000), ("Alice", 60000), ("Bob", 55000)])
+result3 = rdd3.mapValues(lambda salary: salary * 1.1).collect()
+print("Exercise 3 (MapValues):", result3)
+
+# ------------------------- PARTITIONBY EXERCISE -------------------------
+# Exercise 4: Partition an RDD based on key hash
+# Given an RDD of key-value pairs, partition it into 3 partitions.
+rdd4 = sc.parallelize([("A", 1), ("B", 2), ("C", 3), ("D", 4), ("E", 5)])
+result4 = rdd4.partitionBy(3).glom().collect()
+print("Exercise 4 (PartitionBy):", result4)
+
+# ------------------------- LOOKUP EXERCISE -------------------------
+# Exercise 5: Find all values for a given key
+# Given an RDD of (key, value) pairs, retrieve all values for a given key.
+rdd5 = sc.parallelize([("A", 10), ("B", 20), ("A", 30), ("B", 40), ("C", 50)])
+result5 = rdd5.lookup("A")
+print("Exercise 5 (Lookup):", result5)
+
+# ------------------------- COUNTBYKEY EXERCISE -------------------------
+# Exercise 6: Count occurrences of each key
+# Given an RDD of (category, product), count occurrences of each category.
+rdd6 = sc.parallelize([("Electronics", "Laptop"), ("Furniture", "Table"), 
+                       ("Electronics", "Phone"), ("Furniture", "Chair"), ("Electronics", "Tablet")])
+result6 = rdd6.countByKey()
+print("Exercise 6 (CountByKey):", result6)
+
+# ------------------------- REDUCE EXERCISE -------------------------
+# Exercise 7: Find the sum of all numbers
+# Given an RDD of numbers, find the sum using reduce.
+rdd7 = sc.parallelize([10, 20, 30, 40, 50])
+result7 = rdd7.reduce(lambda a, b: a + b)
+print("Exercise 7 (Reduce - Sum of Numbers):", result7)
+
+# ------------------------- AGGREGATE EXERCISE -------------------------
+# Exercise 8: Find min, max, and sum of numbers
+# Given an RDD of numbers, find min, max, and sum using aggregate.
+rdd8 = sc.parallelize([10, 20, 30, 40, 50])
+result8 = rdd8.aggregate((float('inf'), float('-inf'), 0),
+                         lambda acc, x: (min(acc[0], x), max(acc[1], x), acc[2] + x),
+                         lambda acc1, acc2: (min(acc1[0], acc2[0]), max(acc1[1], acc2[1]), acc1[2] + acc2[2])
+                         )
+print("Exercise 8 (Aggregate - Min, Max, Sum):", result8)
+
+# ------------------------- GROUPBY EXERCISE -------------------------
+# Exercise 9: Group words by their first letter
+# Given an RDD of words, group words by their first letter.
+rdd9 = sc.parallelize(["apple", "banana", "cherry", "avocado", "blueberry", "carrot"])
+result9 = rdd9.groupBy(lambda word: word[0]).mapValues(list).collect()
+print("Exercise 9 (GroupBy):", result9)
+
+# ------------------------- FILTERWITHKEY EXERCISE -------------------------
+# Exercise 10: Filter key-value pairs where the key starts with 'A'
+# Given an RDD of (key, value) pairs, filter those where the key starts with 'A'.
+rdd10 = sc.parallelize([("Alice", 25), ("Bob", 30), ("Charlie", 35), ("Anna", 28)])
+result10 = rdd10.filter(lambda kv: kv[0].startswith("A")).collect()
+print("Exercise 10 (Filter with Key Condition):", result10)
 
 # Stop SparkContext
 sc.stop()
