@@ -57,7 +57,7 @@ df.orderBy(length(col("ename")).desc()).show()
 spark.sql("SELECT * FROM employee ORDER BY LENGTH(ename) DESC").show()
 
 # Use Case 7: Case-Insensitive Sorting
-df.orderBy(asc("ename").asc_nulls_last()).show()
+df.orderBy(col("ename").asc_nulls_last()).show()
 # SQL Equivalent
 spark.sql("SELECT * FROM employee ORDER BY ename ASC NULLS LAST").show()
 

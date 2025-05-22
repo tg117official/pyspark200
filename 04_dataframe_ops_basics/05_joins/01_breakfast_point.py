@@ -12,9 +12,7 @@ df_breakfast_orders.createOrReplaceTempView("breakfast_orders")
 df_token_details.createOrReplaceTempView("token_details")
 
 # Inner Join
-inner_join = df_breakfast_orders.join(df_token_details,
-                                      df_breakfast_orders.token_color == df_token_details.color,
-                                      "inner")
+inner_join = df_breakfast_orders.join(df_token_details,df_breakfast_orders.token_color == df_token_details.color,"inner")
 inner_join.show()
 # SQL Equivalent
 spark.sql("SELECT * FROM breakfast_orders INNER JOIN token_details ON breakfast_orders.token_color = token_details.color").show()

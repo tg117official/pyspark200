@@ -20,4 +20,3 @@ employeeDF.show()
 
 # Stop the Spark session
 spark.stop()
-

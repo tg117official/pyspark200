@@ -9,6 +9,8 @@ spark = SparkSession.builder \
     .getOrCreate()
 
 df = spark.read.option("header","true").option("inferSchema","true").csv("s3a://pst-18april/employee_csv/employee.txt")
+
+df.write.format()
 df.show()
 
 spark.stop()

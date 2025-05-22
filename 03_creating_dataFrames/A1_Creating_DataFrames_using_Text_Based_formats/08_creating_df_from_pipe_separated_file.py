@@ -16,11 +16,11 @@ schema = StructType([
 ])
 
 # Loading the data from a pipe-delimited CSV file using the defined schema
-df = spark.read.format("csv") \
+df = spark.read \
     .option("header", "true") \
     .option("delimiter", "|") \
     .schema(schema) \
-    .load("data/users_pipe_separated.txt")  # Adjust the path to where your actual data file is located
+    .csv("data/users_pipe_separated.txt")  # Adjust the path to where your actual data file is located
 
 # Showing the schema of the DataFrame to confirm structure and data types
 df.printSchema()

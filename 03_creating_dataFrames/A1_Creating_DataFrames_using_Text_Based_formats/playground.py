@@ -1,9 +1,10 @@
 from pyspark.sql import SparkSession
 
 spark = SparkSession.builder \
-    .appName("JSON Data Processing") \
+    .appName("JSON Data Processing").enableHiveSupport() \
     .getOrCreate()
 
+sc = spark.sparkContext
 
 # Exercise 1: Load a simple JSON file into a DataFrame
 print("\nExercise 1: Load a simple JSON file into a DataFrame")
@@ -19,3 +20,6 @@ with open(json_path_1, 'w') as file:
 
 df1 = spark.read.json(json_path_1)
 df1.show()
+
+input("Press Enter to Terminate")
+spark.stop()
