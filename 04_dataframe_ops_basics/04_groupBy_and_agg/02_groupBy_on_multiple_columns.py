@@ -85,5 +85,5 @@ spark.stop()
 #   9. Minimum Sales by Region and Gender: How do you determine the minimum sales amount for each combination of region and gender?
 #   10. Total Number of Employees and Average Salary by Department and Gender: How can you find both the total number of employees and the average salary grouped by department and gender?
 
-# These questions are designed to guide through the process of performing multi-column group-by operations using both DataFrame API methods and SQL queries, covering a range of scenarios from basic aggregations to more complex groupings and calculations.
+# These questions are designed to guide through the process of performing multi-column group-by operations using both DataFrame API methods and SQL queries, covering a range of scenarios from 01_basic_broadcast aggregations to more complex groupings and calculations.
 

@@ -34,7 +34,7 @@ with open(schema_path, 'r') as f:
 #     "type" : "long",
 #     "doc" : "Unix epoch time in seconds"
 #   } ],
-#   "doc:" : "A basic schema for storing Twitter messages"
+#   "doc:" : "A 01_basic_broadcast schema for storing Twitter messages"
 # } """
 
 
