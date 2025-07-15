@@ -6,6 +6,11 @@ from pyspark import StorageLevel
 # Initialize a Spark session
 spark = SparkSession.builder.appName("AdvancedDataManipulation").enableHiveSupport().getOrCreate()
 
+sc = spark.sparkContext
+
+dataRDD = sc.textFile()
+dataRDD = spark.sparkContext.textFile()
+
 df = spark.read.csv("data/employee.csv", header=True, inferSchema=True)
 
 # Register DataFrame as SQL temporary view
